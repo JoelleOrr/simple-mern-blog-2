@@ -2,31 +2,14 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
 
-const ArticlesForm = () => {
+const ArticleForm = () => {
 
 const initialState = { title: '', text: '' }
 const [values, setValues] = useState(initialState)
 
 const handleSubmit = e => {
-  // prevent HTML default submission
-    e.preventDefault()
-  
-  // POST request to RESTful route (to be defined in backend)
-    fetch('/articles', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(values)
-    })
-      .then(response => {
-        if (response.ok) {
-  // let the user know that it went trough
-          alert('Article successfully created')
-  // when we get confirmation we can reset the form to its original state (empty)
-          setValues(initialState)
-        }
-      })
-      .catch(error => alert(error))
-  }
+    // prevent HTML default submission
+      e.preventDefault()
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -57,5 +40,4 @@ const handleSubmit = e => {
   )
 }
 
-export default ArticlesForm
-
+export default ArticleForm
